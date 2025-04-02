@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyBike</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="about-us" href="#about-us">ABOUT US</a>
+    </div>
+
+    <div class="logo">
+        <img src="/static/HappyBikeLogo.png" alt="HappyBike Logo">
+    </div>
+
+    <div class="container">
+
+        <div class="left">
+
+            <form action="/submit_rental" method="POST">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+                <label for="company">Company:</label>
+                <input type="text" id="customer" name="company" placeholder="Enter your company (optional)">
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street" placeholder="Enter you street" required>
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone" required>
+
+
+                <label for="bike">Select Bike:</label>
+                <select id="bike" name="bike">
+                    <option value="" disabled selected>Select a bike</option>
+                    {% for bike in bikes %}
+                    <option value="{{ bike.id }}">{{ bike.brand }} {{ bike.model }} {{ bike.type }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="rental-start">Rental Start Time:</label>
+                <input type="datetime-local" id="rental-start" name="rental-start" required>
+
+                <label for="rental-end">Rental End Time:</label>
+                <input type="datetime-local" id="rental-end" name="rental-end" required>
+
+                <p>Total: <span id="total-price">0.00</span> €</p>
+
+                <button type="submit">Submit Rental</button>
+            </form>
+        </div>
+
+
+        <div class="right">
+            <img src="/static/bike.png" alt="Bike">
+        </div>
+    </div>
+
+
+</body>
+
+</html>
